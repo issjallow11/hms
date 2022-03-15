@@ -17,6 +17,9 @@ Vue.prototype.$gate = new Gate(window.user);
 
 import Swal from 'sweetalert2';
 
+import Vuetify from '../plugins/vuetify';
+Vue.use(Vuetify);
+
 
 const Toast = Swal.mixin({
     toast: true,
@@ -101,6 +104,7 @@ Vue.filter('yesno', value => (value ? '<i class="fas fa-check green"></i>' : '<i
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
+    vuetify: Vuetify,
     el: '#app',
     router
 });

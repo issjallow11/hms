@@ -2,45 +2,62 @@
   <section class="content">
     <div class="container-fluid">
         <div class="row">
-
           <div class="col-12">
-        
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Clients List</h3>
-
                 <div class="card-tools">
                   
-                  <button type="button" class="btn btn-sm btn-primary" @click="newModal">
-                      <i class="fa fa-plus-square"></i>
-                      Add New
-                  </button>
+                  <router-link to="/client/Register">
+                    <button class="btn btn-sm btn-primary">
+                      <i class="fa fa-user-plus">
+                        Add Patient
+                      </i>
+                    </button>
+                  </router-link>
                 </div>
               </div>
+                <!-- spinner -->
+                      <div v-if="loading" class="text-center">
+                        <div class="spinner-border text-danger">
+                              <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>Clinic N0:</th>
                       <th>Name</th>
-                      <th>Description</th>
-                      <th>Category</th>
-                      <th>Price</th>
+                      <th>Address</th>
+                      <th>Age</th>
+                      <th>Gender</th>
+                      <th>Nationality</th>
+                      <th>Marital Status</th>
+                      <th>Medical History</th>
+                      <th>Occupation</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                      <tr v-for="client in clients" :key="client.id">
-
-                      <td>{{client.first_name}}</td>
-                      <td>{{client.middle_name}}</td>
-                      <td>{{client.last_name | truncate(30, '...')}}</td>
+                      <td>{{client.clinic_no}}</td>
+                      <td>{{client.first_name}} {{client.middle_name}} {{client.last_name}}</td>
+                      <td>{{client.address}}</td>
                       <td>{{client.age}}</td>
-                      <td>{{client.date_of_birth}}</td>
+                      <!-- <td>{{client.last_name | truncate(30, '...')}}</td> -->
+                      <td>{{client.gender}}</td>
+                      <td>{{client.nationality}}</td>
+                      <td>{{client.marital_status}}</td>
+                      <td>{{client.medical_history}}</td>
+                      <td>{{client.occupation}}</td>
+                     
                       <!-- <td><img v-bind:src="'/' + product.photo" width="100" alt="product"></td> -->
                       <td>
-                        
+                        <router-link :to="{ name: 'clientsShow', params: { id: client.id }}" >
+                          <i class="fa fa-eye green"></i>
+                        </router-link>/
                         <a href="#" @click="editModal(product)">
                             <i class="fa fa-edit blue"></i>
                         </a>
@@ -50,7 +67,13 @@
                         </a>
                       </td>
                     </tr>
+                      <!-- <div  v-if="clients.length == 0">
+                        <div class="col-12 d-flex justify-content-center text-center">
+                            <h4>No Data Found</h4>
+                        </div>
+                    </div> -->
                   </tbody>
+
                 </table>
               </div>
               <!-- /.card-body -->
@@ -63,7 +86,7 @@
         </div>
 
         <!-- Modal -->
-        <!-- <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
+        <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -124,7 +147,7 @@
                   </form>
                 </div>
             </div>
-        </div> -->
+        </div>
 
     </div>
   </section>
@@ -141,6 +164,7 @@
             return {
                 editmode: false,
                 clients : {},
+                loading: false,
                 form: new Form({
                     id : '',
                     category : '',
@@ -169,84 +193,81 @@
           //     this.$Progress.finish();
           // },
           loadClients(){
-
             // if(this.$gate.isAdmin()){
-              axios.get("api/clients").then(({ data }) => (this.clients = data.data));
+              this.loading = true;
+              axios.get("api/clients").then(({ data }) => {
+                if(data.success){
+                  this.loading = false
+                  this.clients = data.data
+                }
+                });
+             
             // }
           },
-          loadCategories(){
-              axios.get("/api/category/list").then(({ data }) => (this.categories = data.data));
-          },
-          loadTags(){
-              axios.get("/api/tag/list").then(response => {
-                  this.autocompleteItems = response.data.data.map(a => {
-                      return { text: a.name, id: a.id };
-                  });
-              }).catch(() => console.warn('Oh. Something went wrong'));
-          },
-          editModal(product){
-              this.editmode = true;
-              this.form.reset();
-              $('#addNew').modal('show');
-              this.form.fill(product);
-          },
-          newModal(){
-              this.editmode = false;
-              this.form.reset();
-              $('#addNew').modal('show');
-          },
-          createProduct(){
-              this.$Progress.start();
+          
+          // editModal(product){
+          //     this.editmode = true;
+          //     this.form.reset();
+          //     $('#addNew').modal('show');
+          //     this.form.fill(product);
+          // },
+          // newModal(){
+          //     this.editmode = false;
+          //     this.form.reset();
+          //     $('#addNew').modal('show');
+          // },
+          // createProduct(){
+          //     this.$Progress.start();
 
-              this.form.post('api/product')
-              .then((data)=>{
-                if(data.data.success){
-                  $('#addNew').modal('hide');
+          //     this.form.post('api/product')
+          //     .then((data)=>{
+          //       if(data.data.success){
+          //         $('#addNew').modal('hide');
 
-                  Toast.fire({
-                        icon: 'success',
-                        title: data.data.message
-                    });
-                  this.$Progress.finish();
-                  this.loadClients();
+          //         Toast.fire({
+          //               icon: 'success',
+          //               title: data.data.message
+          //           });
+          //         this.$Progress.finish();
+          //         this.loadClients();
 
-                } else {
-                  Toast.fire({
-                      icon: 'error',
-                      title: 'Some error occured! Please try again'
-                  });
+          //       } else {
+          //         Toast.fire({
+          //             icon: 'error',
+          //             title: 'Some error occured! Please try again'
+          //         });
 
-                  this.$Progress.failed();
-                }
-              })
-              .catch(()=>{
+          //         this.$Progress.failed();
+          //       }
+          //     })
+          //     .catch(()=>{
 
-                  Toast.fire({
-                      icon: 'error',
-                      title: 'Some error occured! Please try again'
-                  });
-              })
-          },
-          updateProduct(){
-              this.$Progress.start();
-              this.form.put('api/product/'+this.form.id)
-              .then((response) => {
-                  // success
-                  $('#addNew').modal('hide');
-                  Toast.fire({
-                    icon: 'success',
-                    title: response.data.message
-                  });
-                  this.$Progress.finish();
-                      //  Fire.$emit('AfterCreate');
+          //         Toast.fire({
+          //             icon: 'error',
+          //             title: 'Some error occured! Please try again'
+          //         });
+          //     })
+          // },
+          // updateProduct(){
+          //     this.$Progress.start();
+          //     this.form.put('api/product/'+this.form.id)
+          //     .then((response) => {
+          //         // success
+          //         $('#addNew').modal('hide');
+          //         Toast.fire({
+          //           icon: 'success',
+          //           title: response.data.message
+          //         });
+          //         this.$Progress.finish();
+          //             //  Fire.$emit('AfterCreate');
 
-                  this.loadClients();
-              })
-              .catch(() => {
-                  this.$Progress.fail();
-              });
+          //         this.loadClients();
+          //     })
+          //     .catch(() => {
+          //         this.$Progress.fail();
+          //     });
 
-          },
+          // },
           deleteClient(id){
               Swal.fire({
                   title: 'Are you sure?',
@@ -282,8 +303,8 @@
             this.$Progress.start();
 
             this.loadClients();
-            this.loadCategories();
-            this.loadTags();
+            // this.loadCategories();
+            // this.loadTags();
 
             this.$Progress.finish();
         },
