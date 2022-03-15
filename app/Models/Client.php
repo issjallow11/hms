@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+
+    public function visitor() {
+      return $this->hasMany(Visitor::class);
+    }
+
+    protected $casts = [
+      'medical_history' => 'array',
+      'contact_type' => 'array',
+      'education_type' => 'array',
+    ];
 }

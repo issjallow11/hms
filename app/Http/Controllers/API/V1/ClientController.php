@@ -4,8 +4,9 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-
+use App\Models\Visitor;
 
 class ClientController extends BaseController
 {
@@ -19,6 +20,7 @@ class ClientController extends BaseController
         $clients = Client::get();
         
         return $this->sendResponse($clients, 'clients list');
+          
     }
 
     /**
@@ -34,44 +36,76 @@ class ClientController extends BaseController
           'first_name' => 'required',
           'last_name' => 'required',
           'address' => 'required',
-          'date_of_birth' => 'required',
-          'age' => 'required',
+          'email' => 'required',
           'gender' => 'required',
-          'marital_status' => 'required',
+          'marriage' => 'required',
+          'sexual_orientation' => 'required',
+          'ethnicity' => 'required',
+          'telephone_1' => 'required',
+          'preferred_form_of_contact' => 'required',
+          'occupation' => 'required',
         ]);
 
         try {
           //code...
+          DB::beginTransaction();
           $client = new Client;
           $client->clinic_no = $request->clinic_no;
           $client->first_name = $request->first_name;
           $client->middle_name = $request->middle_name;
           $client->last_name = $request->last_name;
+          $client->email = $request->email;
           $client->address = $request->address;
           $client->date_of_birth = $request->date_of_birth;
           $client->age = $request->age;
           $client->gender = $request->gender;
+          $client->marriage = $request->marriage;
           $client->marital_status = $request->marital_status;
           $client->nationality = $request->nationality;
           $client->sexual_orientation = $request->sexual_orientation;
           $client->medical_history = $request->medical_history;
-          $client->medications = $request->medications;
+          // foreach($request->medical_history as $item){
+          //   $client->medical_history = $item;
+          // }
+          $client->medical_history_details = $request->medical_history_details;
+          $client->medication = $request->medication;
+          $client->medication_details = $request->medication_details;
           $client->allergies = $request->allergies;
+          $client->allergies_details = $request->allergies_details;
           $client->ethnicity = $request->ethnicity;
           $client->telephone_1 = $request->telephone_1;
           $client->telephone_2 = $request->telephone_2;
-          $client->email = $request->email;
           $client->preferred_form_of_contact = $request->preferred_form_of_contact;
-          $client->education = $request->education;
+          $client->contact_type = $request->contact_type;
+          // foreach($request->contact_type as $item){
+          //   $client->contact_type = $item;
+          // }
+          $client->educated = $request->educated;
+          $client->education_type = $request->education_type;
+          // foreach($request->education_type as $item){
+          //   $client->education_type = $item;
+          // }
           $client->education_level = $request->education_level;
           $client->occupation = $request->occupation;
-  
+          $client->occupation_type = $request->occupation_type;
+
           $client->save();
+
+          $visit = new Visitor();
+          $visit->client_id = $client->id;
+          $visit->reason_for_visiting = $request->reason_for_visiting;
+          $visit->status = 'Arrived, waiting to be seen (A)';
+          $visit->save();
+
+          DB::commit();
+          
+          return $this->sendResponse($client, 'New Record Added');
 
         } catch (\Exception $e) {
           //throw $th;
-          // return $this->sendError('error');
-          return $e->getMessage();
+          DB::rollback();
+
+          return $this->$e->getMessage();
         }
     }
 
@@ -83,7 +117,14 @@ class ClientController extends BaseController
      */
     public function show(Client $client)
     {
-        //
+      try {
+        //code...
+        return $this->sendResponse($client, 'ismaila');
+
+      } catch (\Exception $e) {
+        
+        return $this->sendError('error');
+      }
     }
 
     /**
@@ -106,6 +147,9 @@ class ClientController extends BaseController
      */
     public function destroy(Client $client)
     {
-        
+      $client->delete();
+
+      return $this->sendResponse($client, 'Patient has been Deleted');
+      
     }
 }

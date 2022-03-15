@@ -1,7 +1,8 @@
 export default [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
     { path: '/clients', component: require('./components/Booking_and_Registration/Patients.vue').default},
-    { path: '/booking/clients/register', component: require('./components/Booking_and_Registration/PatientRegistration.vue').default},
+    { path: '/client/show/:id', name: 'clientsShow', props: true, component: require('./components/Booking_and_Registration/PatientView.vue').default},
+    { path: '/client/Register', component: require('./components/Booking_and_Registration/PatientRegistration.vue').default},
     { path: '/profile', component: require('./components/Profile.vue').default },
     { path: '/developer', component: require('./components/Developer.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },
