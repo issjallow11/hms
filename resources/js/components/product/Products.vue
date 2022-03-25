@@ -168,20 +168,19 @@
               this.$Progress.finish();
           },
           loadProducts(){
-
             // if(this.$gate.isAdmin()){
-              axios.get("api/product").then(({ data }) => (this.products = data.data));
+            axios.get("api/product").then(({ data }) => (this.products = data.data));
             // }
           },
           loadCategories(){
-              axios.get("/api/category/list").then(({ data }) => (this.categories = data.data));
+            axios.get("/api/category/list").then(({ data }) => (this.categories = data.data));
           },
           loadTags(){
-              axios.get("/api/tag/list").then(response => {
-                  this.autocompleteItems = response.data.data.map(a => {
-                      return { text: a.name, id: a.id };
-                  });
-              }).catch(() => console.warn('Oh. Something went wrong'));
+            axios.get("/api/tag/list").then(response => {
+              this.autocompleteItems = response.data.data.map(a => {
+                  return { text: a.name, id: a.id };
+              });
+            }).catch(() => console.warn('Oh. Something went wrong'));
           },
           editModal(product){
               this.editmode = true;
@@ -226,7 +225,7 @@
                   });
               })
           },
-          updateProduct(){
+          p(){
               this.$Progress.start();
               this.form.put('api/product/'+this.form.id)
               .then((response) => {
@@ -292,7 +291,7 @@
             },
         },
         computed: {
-          filteredItems() {
+          a() {
             return this.autocompleteItems.filter(i => {
               return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
             });

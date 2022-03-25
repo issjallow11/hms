@@ -11,13 +11,13 @@ use App\Models\Visitor;
 class ClientController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Visitors.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $clients = Client::get();
+        $clients = Client::with('visitor')->get();
         
         return $this->sendResponse($clients, 'clients list');
           
@@ -64,9 +64,6 @@ class ClientController extends BaseController
           $client->nationality = $request->nationality;
           $client->sexual_orientation = $request->sexual_orientation;
           $client->medical_history = $request->medical_history;
-          // foreach($request->medical_history as $item){
-          //   $client->medical_history = $item;
-          // }
           $client->medical_history_details = $request->medical_history_details;
           $client->medication = $request->medication;
           $client->medication_details = $request->medication_details;
@@ -77,14 +74,8 @@ class ClientController extends BaseController
           $client->telephone_2 = $request->telephone_2;
           $client->preferred_form_of_contact = $request->preferred_form_of_contact;
           $client->contact_type = $request->contact_type;
-          // foreach($request->contact_type as $item){
-          //   $client->contact_type = $item;
-          // }
           $client->educated = $request->educated;
           $client->education_type = $request->education_type;
-          // foreach($request->education_type as $item){
-          //   $client->education_type = $item;
-          // }
           $client->education_level = $request->education_level;
           $client->occupation = $request->occupation;
           $client->occupation_type = $request->occupation_type;
@@ -115,11 +106,13 @@ class ClientController extends BaseController
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Client $client,)
     {
       try {
-        //code...
-        return $this->sendResponse($client, 'ismaila');
+        //for viewing a single patient
+        $patient = Client::with('visitor')->findOrFail($client->id);
+
+        return $this->sendResponse($patient, 'ismaila');
 
       } catch (\Exception $e) {
         
@@ -134,9 +127,16 @@ class ClientController extends BaseController
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request,$id)
     {
         //
+        $pat = Client::findOrFail($id);
+        $pat->first_name = $request->first_name;
+        $pat->medical_history = $request->medical_history;
+        
+        $pat->save();
+
+        return $this->sendResponse($pat, 'client');
     }
 
     /**

@@ -9,7 +9,17 @@ class Visitor extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+      'reason_for_visiting' => 'array',
+      
+    ];
+
     public function client(){
       return $this->belongsTo(Client::class);
+    }
+
+    public function user()
+    {
+      return $this->belongsTo(User::class);
     }
 }

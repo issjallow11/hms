@@ -9,7 +9,8 @@ class Client extends Model
 {
     use HasFactory;
 
-    public function visitor() {
+    public function visitor() 
+    {
       return $this->hasMany(Visitor::class);
     }
 

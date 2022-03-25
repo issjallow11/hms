@@ -20,10 +20,10 @@
           <ul class="nav nav-treeview">
 
             <li class="nav-item">
-              <router-link to="#" class="nav-link">
+              <router-link to="/visitors" class="nav-link">
                 <i class="nav-icon fas fa-tags green"></i>
                 <p>
-                  Booking Schedule
+                  Visitors
                 </p>
               </router-link>
             </li>
@@ -37,11 +37,51 @@
               </router-link>
             </li>
         
+            <!-- <li class="nav-item">
+              <router-link to="/visitors" class="nav-link">
+                  <i class="nav-icon fas fa-list-ol green"></i>
+                  <p>
+                    Reason for visit
+                  </p>
+              </router-link>
+            </li> -->
+        </ul>
+      </li>
+
+      <!-- Clinical Module -->
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-clinic-medical red"></i>
+          <p>
+            Clinical Module
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+          <ul class="nav nav-treeview">
+<!-- 
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                <i class="nav-icon fas fa-tags green"></i>
+                <p>
+                  Booking Schedule
+                </p>
+              </router-link>
+            </li> -->
+
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                <i class="nav-icon fas fa-list-ol green"></i>
+                <p>
+                  General OPD
+                </p>
+              </router-link>
+            </li>
+        
             <li class="nav-item">
               <router-link to="#" class="nav-link">
                   <i class="nav-icon fas fa-list-ol green"></i>
                   <p>
-                    Reason for visit
+                    Pregnancy Test
                   </p>
               </router-link>
             </li>

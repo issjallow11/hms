@@ -16,6 +16,7 @@ class CreateVisitorsTable extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');            
             $table->longText('reason_for_visiting');
             $table->string('status');
             $table->longText('remarks')->nullable();
