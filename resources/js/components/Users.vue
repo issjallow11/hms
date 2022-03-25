@@ -111,6 +111,8 @@
                                 <option value="">Select User Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">Standard User</option>
+                                <option value="doctor">Medical Doctor</option>
+                                <option value="nurse">Nurse</option>
                             </select>
                             <has-error :form="form" field="type"></has-error>
                         </div>

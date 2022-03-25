@@ -40,6 +40,8 @@ class User extends Authenticatable // implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    
+
      /**
      * Get the profile photo URL attribute.
      *
@@ -73,5 +75,20 @@ class User extends Authenticatable // implements MustVerifyEmail
     public function isUser()
     {
         return $this->roles()->where('name', 'User')->exists();
+    }
+
+    public function isDoctor()
+    {
+        return $this->roles()->where('name', 'Doctor')->exists();
+    }
+
+    public function isNurse()
+    {
+        return $this->roles()->where('name', 'Nurse')->exists();
+    }
+
+    public function visitor() 
+    {
+      return $this->hasMany(Visitor::class);
     }
 }

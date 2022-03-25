@@ -82,7 +82,13 @@ class UserController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.@Josh What about your model. Whats the protectedKey? – 
+OffTheFitz
+ Jul 24, 2013 at 13:58
+2@Josh What about your model. Whats the protectedKey? – 
+OffTheFitz
+ Jul 24, 2013 at 13:58
+2
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
