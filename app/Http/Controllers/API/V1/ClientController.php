@@ -6,10 +6,16 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\MedicalHistory;
 use App\Models\Visitor;
 
 class ClientController extends BaseController
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
+
     /**
      * Display a listing of the Visitors.
      *
@@ -17,7 +23,7 @@ class ClientController extends BaseController
      */
     public function index()
     {
-        $clients = Client::with('visitor')->get();
+        $clients = Client::with('visitor','medicalHistory')->get();
         
         return $this->sendResponse($clients, 'clients list');
           
@@ -63,12 +69,6 @@ class ClientController extends BaseController
           $client->marital_status = $request->marital_status;
           $client->nationality = $request->nationality;
           $client->sexual_orientation = $request->sexual_orientation;
-          $client->medical_history = $request->medical_history;
-          $client->medical_history_details = $request->medical_history_details;
-          $client->medication = $request->medication;
-          $client->medication_details = $request->medication_details;
-          $client->allergies = $request->allergies;
-          $client->allergies_details = $request->allergies_details;
           $client->ethnicity = $request->ethnicity;
           $client->telephone_1 = $request->telephone_1;
           $client->telephone_2 = $request->telephone_2;
@@ -79,8 +79,17 @@ class ClientController extends BaseController
           $client->education_level = $request->education_level;
           $client->occupation = $request->occupation;
           $client->occupation_type = $request->occupation_type;
-
           $client->save();
+
+          $medicalHistory = new MedicalHistory;
+          $medicalHistory->client_id = $client->id;
+          $medicalHistory->medical_history = $request->medical_history;
+          $medicalHistory->medical_history_details = $request->medical_history_details;
+          $medicalHistory->medication = $request->medication;
+          $medicalHistory->medication_details = $request->medication_details;
+          $medicalHistory->allergies = $request->allergies;
+          $medicalHistory->allergies_details = $request->allergies_details;
+          $medicalHistory->save();
 
           $visit = new Visitor();
           $visit->client_id = $client->id;
@@ -96,7 +105,7 @@ class ClientController extends BaseController
           //throw $th;
           DB::rollback();
 
-          return $this->$e->getMessage();
+          return $this->sendError($e->getMessage());
         }
     }
 
@@ -110,7 +119,7 @@ class ClientController extends BaseController
     {
       try {
         //for viewing a single patient
-        $patient = Client::with('visitor')->findOrFail($client->id);
+        $patient = Client::with('visitor','medicalHistory')->findOrFail($client->id);
 
         return $this->sendResponse($patient, 'ismaila');
 

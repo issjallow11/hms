@@ -90,6 +90,7 @@
                       label="Nationality"
                       required
                     ></v-text-field>
+                    <!-- <select name="" id="" v-model="form.nationality" class="selectpicker countrypicker"></select> -->
                   </v-col>
                 </v-row>
               </v-container>

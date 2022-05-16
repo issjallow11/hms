@@ -51,7 +51,8 @@
                       <td>{{client.gender}}</td>
                       <td>{{client.nationality}}</td>
                       <td>{{client.marriage}} {{client.marital_status}}</td>
-                      <td>{{client.medical_history ? client.medical_history : N/A}}</td>
+                      <td v-for="medical_history in client.medical_history" :key="medical_history.id">{{medical_history.medical_history}}</td>
+                      <!-- <td>{{client.medical_history ? client.medical_history[0].medical_history : N/A}}</td> -->
                       <td>{{client.telephone_1}}</td>
                       <td>{{client.occupation}}</td>
                      

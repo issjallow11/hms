@@ -34,7 +34,9 @@
         "vform": "^1.0.1",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.3",
+        "vue-simple-search-dropdown": "^1.0.1",
         "vuetify": "^2.6.4",
+        "vuetify-country-region-select": "^0.1.7",
         "vuetify-loader": "^1.4.3"
     }
 }

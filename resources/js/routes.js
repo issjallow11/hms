@@ -6,6 +6,9 @@ export default [
     { path: '/client/edit/:id', name: 'clientEdit', props: true, component: require('./components/Booking_and_Registration/ClientEdit.vue').default},
     { path: '/visitors', component: require('./components/Booking_and_Registration/Visitors.vue').default},
     { path: '/visitors/add', component: require('./components/Booking_and_Registration/VisitorsAdd.vue').default},
+    { path: '/clinicalModule/', component: require('./components/Booking_and_Registration/VisitorsAdd.vue').default},
+    { path: '/GeneralOPD/:visitId/:clientId', name: 'generalOPD', props:true, component: require('./components/Clinical_Module/GeneralOPD.vue').default},
+
     { path: '/profile', component: require('./components/Profile.vue').default },
     { path: '/developer', component: require('./components/Developer.vue').default },
     { path: '/users', component: require('./components/Users.vue').default },

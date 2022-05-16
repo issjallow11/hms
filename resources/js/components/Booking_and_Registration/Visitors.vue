@@ -35,6 +35,8 @@
                     <th>Status</th>
                     <th>Remarks</th>
                     <th>Seen By</th>
+                    <th>Clinical Module</th>
+                    <!-- <th>Attend</th> -->
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -55,7 +57,22 @@
                     </td>
                     <td>{{visit.remarks ? visit.remarks : 'N/A' }}</td>
                     <td>{{visit.user_id ? visit.user.name : 'No One Yet'}}</td>
-
+                    <td>
+                      <button type="button" data-toggle="modal" @click="setVisitorId(visit.id,visit.client_id)" data-target="#clinicalModal">
+                        <router-link to="#">
+                          <i class="fas fa-clinic-medical"></i>
+                        </router-link>
+                      </button>
+                    </td>
+                    <!-- <td v-else><span class="text-blue">Patient Being Attended To!</span> </td> -->
+                    <!-- <td>
+                      <button class="btn btn-sm btn-success">
+                        Attend
+                      </button>
+                      <button class="btn btn-sm btn-danger">
+                        Cancell
+                      </button>
+                    </td> -->
                     <!-- <td><img v-bind:src="'/' + product.photo" width="100" alt="product"></td> -->
                     <td>
                       <!-- <router-link
@@ -135,7 +152,7 @@
                   <has-error :form="form" field="description"></has-error>
                  </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label>Client Name</label>
                   <select class="form-control" v-model="form.client_id" >
                     <option value="">Please Select</option>
@@ -149,7 +166,7 @@
                     </option>
                   </select>
                   <has-error :form="form" field="category_id"></has-error>
-                </div>
+                </div> -->
                 
                 <div class="form-group">
                   <label>Status</label>
@@ -192,8 +209,189 @@
               </div>
             </form>
           </div>
+        </div>        
+      </div>
+    <!-- end of modal 1 -->
+    <!-- Clinal Modal -->
+      <div class="modal fade" id="clinicalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content container">
+            <div class="modal-header bg-blue">
+              <h5 class="modal-title " id="exampleModalLabel">Open in Clinal Module</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body"> 
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-3 col-sm-3">
+                    <router-link :to="{name: 'generalOPD', params: {visitId:visitorId,clientId:clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                        General OPD
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Lab Test Request
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Pregnancy Test & Advice
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Anter Natal Care
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Post Natal Care
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        IWC
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Vaccination
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        FP Services New
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        FP Services Revisit
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Condom Supply
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Sexual Health Screening Male
+                      </button>
+                    </router-link>
+                  </div> 
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Sexual Health Screening Female
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Symptoms Male
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Symptoms Female
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Ultrasound Scanning – ANC
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Ultrasound Scanning – Gynae
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Infertility Management
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Cervical Screening
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                       Results Communication
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                        Return for Treatment
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                       Prescription
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link to="">
+                      <button class="btn btn-success p-2">
+                       STI Contact Tracing Form
+                      </button>
+                    </router-link>
+                  </div>
+                  
+                 </div>
+              </div>
+              ...
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
         </div>
       </div>
+      <!-- end of clinial modal -->
     </div>
   </section>
 </template>
@@ -208,9 +406,12 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       editmode: false,
       visits: {},
       clients:{},
+      visitorId: '',
+      clientId: '',
       loading: false,
       form: new Form({
         client_id: "",
@@ -340,6 +541,11 @@ export default {
         }
       });
     },
+
+    setVisitorId(visitId,clientId) {
+      this.visitorId = visitId;
+      this.clientId = clientId;
+    }
   },
   mounted() {},
   created() {
@@ -383,6 +589,7 @@ export default {
   background-color: red;
   color: white
 }
+
 /* .badge.badge-secondary-second{
   background-color: grey;
 } */
