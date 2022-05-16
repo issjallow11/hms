@@ -40,6 +40,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'category' => 'CategoryController',
         'tag' => 'TagController',
         'clients' => 'ClientController',
-        'visits' => 'VisitorController'
+        'visits' => 'VisitorController',
+        'generalOpd' => 'GeneralOPDController',
     ]);
 });

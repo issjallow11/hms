@@ -29,13 +29,7 @@ class CreateClientsTable extends Migration
             $table->string('gender');
             $table->string('marriage');
             $table->string('marital_status')->nullable();
-            $table->string('sexual_orientation');
-            $table->longText('medical_history')->nullable();
-            $table->longText('medical_history_details')->nullable();
-            $table->longText('medication')->nullable();
-            $table->longText('medication_details')->nullable();
-            $table->string('allergies')->nullable();
-            $table->longText('allergies_details')->nullable();            
+            $table->string('sexual_orientation');            
             $table->string('ethnicity');
             $table->string('preferred_form_of_contact');
             $table->string('contact_type');

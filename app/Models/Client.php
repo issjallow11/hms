@@ -14,6 +14,11 @@ class Client extends Model
       return $this->hasMany(Visitor::class);
     }
 
+    public function medicalHistory() 
+    {
+      return $this->hasMany(MedicalHistory::class);
+    }
+
     protected $casts = [
       'medical_history' => 'array',
       'contact_type' => 'array',

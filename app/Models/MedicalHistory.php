@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalHistory extends Model
 {
     use HasFactory;
+
+    public function client()
+    {
+      return $this->belongsTo(Client::class);
+    }
+
+    protected $casts = [
+      'medical_history' => 'array',
+    ];
 }

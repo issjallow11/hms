@@ -49,7 +49,7 @@
       </li>
 
       <!-- Clinical Module -->
-      <li class="nav-item has-treeview">
+      <!-- <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-clinic-medical red"></i>
           <p>
@@ -58,25 +58,14 @@
           </p>
         </a>
           <ul class="nav nav-treeview">
-<!-- 
             <li class="nav-item">
-              <router-link to="#" class="nav-link">
-                <i class="nav-icon fas fa-tags green"></i>
-                <p>
-                  Booking Schedule
-                </p>
-              </router-link>
-            </li> -->
-
-            <li class="nav-item">
-              <router-link to="#" class="nav-link">
+              <router-link to="/GeneralOPD" class="nav-link">
                 <i class="nav-icon fas fa-list-ol green"></i>
                 <p>
                   General OPD
                 </p>
               </router-link>
             </li>
-        
             <li class="nav-item">
               <router-link to="#" class="nav-link">
                   <i class="nav-icon fas fa-list-ol green"></i>
@@ -85,8 +74,40 @@
                   </p>
               </router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                  <i class="nav-icon fas fa-list-ol green"></i>
+                  <p>
+                    ANC
+                  </p>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                  <i class="nav-icon fas fa-list-ol green"></i>
+                  <p>
+                    PNC
+                  </p>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                  <i class="nav-icon fas fa-list-ol green"></i>
+                  <p>
+                    IWC
+                  </p>
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="#" class="nav-link">
+                  <i class="nav-icon fas fa-list-ol green"></i>
+                  <p>
+                    Vaccination
+                  </p>
+              </router-link>
+            </li>
         </ul>
-      </li>
+      </li> -->
 
       <!-- <li class="nav-item">
         <router-link to="/products" class="nav-link">

@@ -41,6 +41,15 @@
                       </option>
                     </select>
                   </div>
+                  <Dropdown
+                    :options="clients"
+                    v-on:selected="validateSelection"
+                    v-on:filter="getDropdownValues"
+                    :disabled="false"
+                    name="zipcode"
+                    :maxItem="10"
+                    placeholder="Please select an option">
+                </Dropdown>
                 </div>
                 <div class="mt-2 text-center text-blue">
                   <h3 for="">Reason For Visiting</h3>
@@ -248,10 +257,14 @@
 </template>
 
 <script>
+import Dropdown from 'vue-simple-search-dropdown';
 export default {
+  components: {
+    Dropdown
+  },
   data() {
     return {
-      clients: {},
+      clients: [],
       otherReason: false,
       form: new Form({
         client_id: "",

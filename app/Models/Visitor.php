@@ -22,4 +22,9 @@ class Visitor extends Model
     {
       return $this->belongsTo(User::class);
     }
+
+    public function generalOPD()
+    {
+      return $this->hasMany(GeneralOPD::class);
+    }
 }

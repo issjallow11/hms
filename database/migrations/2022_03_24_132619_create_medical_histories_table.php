@@ -15,6 +15,14 @@ class CreateMedicalHistoriesTable extends Migration
     {
         Schema::create('medical_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->longText('medical_history')->nullable();
+            $table->longText('medical_history_details')->nullable();
+            $table->longText('medication')->nullable();
+            $table->longText('medication_details')->nullable();
+            $table->string('allergies')->nullable();
+            $table->longText('allergies_details')->nullable();
             $table->timestamps();
         });
     }
