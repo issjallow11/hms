@@ -19,6 +19,10 @@ class Client extends Model
       return $this->hasMany(MedicalHistory::class);
     }
 
+    public function generalOPD(){
+      return $this->hasManyThrough(GeneralOPD::class, Visitor::class)->latest()->limit(1);
+    }
+
     protected $casts = [
       'medical_history' => 'array',
       'contact_type' => 'array',

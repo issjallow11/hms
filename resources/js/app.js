@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import moment from 'moment';
+import VueCountryDropdown from "vue-country-dropdown";
 
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
@@ -41,6 +42,8 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '3px'
   });
+
+Vue.use(VueCountryDropdown);
 
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)

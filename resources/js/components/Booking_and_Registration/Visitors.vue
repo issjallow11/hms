@@ -214,7 +214,7 @@
     <!-- end of modal 1 -->
     <!-- Clinal Modal -->
       <div class="modal fade" id="clinicalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content container">
             <div class="modal-header bg-blue">
               <h5 class="modal-title " id="exampleModalLabel">Open in Clinal Module</h5>
@@ -233,148 +233,155 @@
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'labAdd', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Lab Test Request
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link to="/pregnancyTest">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Pregnancy Test & Advice
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link  :to="{name: 'anterNatalCare', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Anter Natal Care
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'postNatalCare', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Post Natal Care
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'iwc', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         IWC
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'vaccination', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Vaccination
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
-                        FP Services New
+                    <router-link :to="{name: 'fp_services', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                        FP Services 
                       </button>
                     </router-link>
                   </div>
-                  <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                  <!-- <div class="col-md-3 col-sm-3">
+                    <router-link :to="{name: 'postNatalCare', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         FP Services Revisit
                       </button>
                     </router-link>
-                  </div>
+                  </div> -->
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'condomSupply', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Condom Supply
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
-                        Sexual Health Screening Male
+                    <router-link :to="{name: 'sexualHealthScreening', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal" >
+                        Sexual Health Screening 
                       </button>
                     </router-link>
                   </div> 
-                  <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                  <!-- <div class="col-md-3 col-sm-3">
+                    <router-link :to="{name: '', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal" >
                         Sexual Health Screening Female
                       </button>
                     </router-link>
-                  </div>
+                  </div> -->
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
-                        Symptoms Male
+                    <router-link :to="{name: 'Symptoms', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                        Symptoms
                       </button>
                     </router-link>
                   </div>
-                  <div class="col-md-3 col-sm-3">
+                  <!-- <div class="col-md-3 col-sm-3">
                     <router-link to="">
-                      <button class="btn btn-success p-2">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Symptoms Female
                       </button>
                     </router-link>
-                  </div>
+                  </div> -->
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
-                        Ultrasound Scanning – ANC
+                    <router-link :to="{name: 'ultraSoundScanning', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                        Ultrasound Scanning
                       </button>
                     </router-link>
                   </div>
-                  <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
-                        Ultrasound Scanning – Gynae
+                  <!-- <div class="col-md-3 col-sm-3">
+                    <router-link :to="{name: '', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                        Ultrasound Scanning
                       </button>
                     </router-link>
-                  </div>
+                  </div> -->
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'infertilityManagement', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Infertility Management
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'cervicalScreening', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Cervical Screening
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'resultsCommunication', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                        Results Communication
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'returnForTreatment', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                         Return for Treatment
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'prescription', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                        Prescription
                       </button>
                     </router-link>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <router-link to="">
-                      <button class="btn btn-success p-2">
+                    <router-link :to="{name: 'referral', params: {visitId:visitorId,clientId:clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
+                       Referral
+                      </button>
+                    </router-link>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <router-link :to="{name: 'sti_contactTracing', params: {visitId: visitorId, clientId: clientId}}">
+                      <button class="btn btn-success p-2" data-dismiss="modal">
                        STI Contact Tracing Form
                       </button>
                     </router-link>

@@ -9,7 +9,7 @@ class GeneralOPD extends Model
 {
     use HasFactory;
 
-    public function visit()
+    public function visitor()
     {
       return $this->belongsTo(Visitor::class);
     }
