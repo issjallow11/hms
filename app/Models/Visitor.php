@@ -27,4 +27,9 @@ class Visitor extends Model
     {
       return $this->hasMany(GeneralOPD::class);
     }
+
+    public function referral()
+    {
+      return $this->hasMany(Referral::class);
+    }
 }

@@ -42,5 +42,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'clients' => 'ClientController',
         'visits' => 'VisitorController',
         'generalOpd' => 'GeneralOPDController',
+        'lab' => 'LabController',
+        'referral' => 'ReferralController'
     ]);
 });

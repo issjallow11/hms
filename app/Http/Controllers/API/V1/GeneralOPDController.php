@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Models\Client;
 use App\Models\GeneralOPD;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class GeneralOPDController extends BaseController
      */
     public function index()
     {
-        //
+      $generalOPD = Client::with('generalOPD')->get();
+
+      return $this->sendResponse($generalOPD, 'success');
     }
 
     /**
@@ -48,7 +51,7 @@ class GeneralOPDController extends BaseController
         $generalOPD->diagnosis = $request->diagnosis;
         $generalOPD->treatment_given = $request->treatment_given;
         $generalOPD->sexual_health_screening = $request->sexual_health_screening;
-        $generalOPD->counselling_provided = $request->counselling_provided;
+        $generalOPD->counselling_provided = $request->cdataounselling_provided;
         $generalOPD->referred = $request->referred;
         $generalOPD->question_asked_by_client = $request->question_asked_by_client;
         $generalOPD->information_leaflet = $request->information_leaflet;

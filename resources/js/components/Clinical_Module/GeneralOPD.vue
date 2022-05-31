@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="text-center ">
+    <!-- <div class="text-center ">
       <h2>Clinical Module Template</h2>
-    </div>
+    </div> -->
     <div class="card mt-3">
       <div class="card-header bg-blue">
         <div class="container">
@@ -14,7 +14,7 @@
       <form @submit.prevent="submitRecord">
         <!-- card body -->
         <div class="card-body">
-          <div class="container">
+          <div class="container-fluid">
 
             <div class="row">
               <div class="col-lg-3">
@@ -195,10 +195,12 @@
             <div v-if="sh_screening_template">
               <!-- <SexualScreening /> -->
               <div>
-                <div class="text-center mt-2">
-                  <h1 class="text-blue">Sexual Screening Module</h1>
+                <div class="card-header bg-blue mt-4">
+                  <div class="container-fluid">
+                    <h2 class="text-white text-center">Sexual Screening Module</h2>
+                  </div>
                 </div>
-                <div class="row">
+                <div class="row mt-4 text-center">
                   <div class="col-lg-4">
                     <label for="male">Male</label>
                     <input type="radio" name="sh_option" id="male" value="male" v-model="sh_screening_template_option">
@@ -733,7 +735,7 @@
         <!-- card footer -->
         <div class="card-footer">
           <div class="container">
-            <button type="sumbit" class="btn btn-primary ">
+            <button type="submit" class="btn btn-primary ">
               <i class="fa fa-paper-plane">submit</i>
             </button>
             <router-link to="/visitors" class="text-white float-right">
