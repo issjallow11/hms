@@ -1,11 +1,11 @@
 export default [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },
-    { path: '/clients', component: require('./components/Booking_and_Registration/Clients.vue').default},
-    { path: '/client/show/:id', name: 'clientsShow', props: true, component: require('./components/Booking_and_Registration/ClientView.vue').default},
-    { path: '/client/Register', component: require('./components/Booking_and_Registration/ClientRegistration.vue').default},
-    { path: '/client/edit/:id', name: 'clientEdit', props: true, component: require('./components/Booking_and_Registration/ClientEdit.vue').default},
-    { path: '/visitors', component: require('./components/Booking_and_Registration/Visitors.vue').default},
-    { path: '/visitors/add', component: require('./components/Booking_and_Registration/VisitorsAdd.vue').default},
+    { path: '/clients', component: require('./components/Booking_and_Registration/clients/Clients.vue').default},
+    { path: '/client/show/:id', name: 'clientsShow', props: true, component: require('./components/Booking_and_Registration/clients/ClientView.vue').default},
+    { path: '/client/Register', component: require('./components/Booking_and_Registration/clients/ClientRegistration.vue').default},
+    { path: '/client/edit/:id', name: 'clientEdit', props: true, component: require('./components/Booking_and_Registration/clients/ClientEdit.vue').default},
+    { path: '/visitors', component: require('./components/Booking_and_Registration/visitors/Visitors.vue').default},
+    { path: '/visitors/add', component: require('./components/Booking_and_Registration/visitors/VisitorsAdd.vue').default},
 
     //clinical modules routes
     { path: '/clinicalModule/', component: require('./components/Clinical_Module/ClinicalModule.vue').default},
@@ -37,5 +37,13 @@ export default [
     // { path: '/products', component: require('./components/product/Products.vue').default },
     // { path: '/product/tag', component: require('./components/product/Tag.vue').default },
     // { path: '/product/category', component: require('./components/product/Category.vue').default },
+
+    //configurations
+    { path: '/settings/ethnicity', component: require('./components/configurations/Ethinicity.vue').default },
+    { path: '/settings/sex', component: require('./components/configurations/SexualOrientation.vue').default },
+    { path: '/settings/gender', component: require('./components/configurations/Gender.vue').default },
+    { path: '/settings/education_level', component: require('./components/configurations/Education.vue').default },
+    { path: '/settings/occupation', component: require('./components/configurations/Occupation.vue').default },    
+
     { path: '*', component: require('./components/NotFound.vue').default }
 ];

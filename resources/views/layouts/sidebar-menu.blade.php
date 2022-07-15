@@ -27,7 +27,8 @@
                 </p>
               </router-link>
             </li>
-
+            
+            @if(auth()->user()->type === 'admin' || auth()->user()->type === 'user')
             <li class="nav-item">
               <router-link to="/clients" class="nav-link">
                 <i class="nav-icon fas fa-list-ol green"></i>
@@ -36,6 +37,7 @@
                 </p>
               </router-link>
             </li>
+            @endif
         
             <!-- <li class="nav-item">
               <router-link to="/visitors" class="nav-link">
@@ -211,8 +213,48 @@
           </p>
         </a>
         <ul class="nav nav-treeview">
-
           <li class="nav-item">
+            <router-link to="/settings/ethnicity" class="nav-link">
+              <i class="nav-icon fas fa-list-ol green"></i>
+              <p>
+                Ethnicity
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/settings/sex" class="nav-link">
+              <i class="nav-icon fas fa-list-ol green"></i>
+              <p>
+                Sexual Orientation
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/settings/gender" class="nav-link">
+              <i class="nav-icon fas fa-list-ol green"></i>
+              <p>
+                Gender
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/settings/occupation" class="nav-link">
+              <i class="nav-icon fas fa-list-ol green"></i>
+              <p>
+                Occupation
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/settings/education_level" class="nav-link">
+              <i class="nav-icon fas fa-list-ol green"></i>
+              <p>
+                Education Level
+              </p>
+            </router-link>
+          </li>
+
+          <!-- <li class="nav-item">
             <router-link to="/product/category" class="nav-link">
               <i class="nav-icon fas fa-list-ol green"></i>
               <p>
@@ -227,7 +269,7 @@
                 Tags
               </p>
             </router-link>
-          </li>
+          </li> -->
           
             <li class="nav-item">
               <router-link to="/developer" class="nav-link">

@@ -33,12 +33,21 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('tag/list', 'TagController@list');
     Route::get('category/list', 'CategoryController@list');
     Route::post('product/upload', 'ProductController@upload');
+    Route::get('doctors','UserController@getDoctors');
+    Route::get('getClient','ClientController@getClient');
 
     Route::apiResources([
         'user' => 'UserController',
         'product' => 'ProductController',
+        //configurations
         'category' => 'CategoryController',
+        'ethnicity' => 'EthnicityController',
+        'sex' => 'SexualOrientationController',
+        'gender' => 'GenderController',
+        'occupation' => 'OccupationController',
+        'educationLevel' => 'EducationLevelController',
         'tag' => 'TagController',
+        
         'clients' => 'ClientController',
         'visits' => 'VisitorController',
         'generalOpd' => 'GeneralOPDController',
