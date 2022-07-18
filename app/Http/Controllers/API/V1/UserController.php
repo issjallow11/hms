@@ -37,6 +37,12 @@ class UserController extends BaseController
         return $this->sendResponse($users, 'Users list');
     }
 
+    public function getDoctors(){
+      $doctors = User::where('type','doctor')->get();
+
+      return $this->sendResponse($doctors, 'success');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,14 +55,19 @@ class UserController extends BaseController
      */
     public function store(UserRequest $request)
     {
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'type' => $request['type'],
-        ]);
 
-        return $this->sendResponse($user, 'User Created Successfully');
+      $user = User::create([
+        'first_name' => $request['first_name'],
+        'middle_name' => $request['middle_name'],
+        'last_name' => $request['last_name'],
+        'telephone_1' => $request['telephone_1'],
+        'telephone_2' => $request['telephone_2'],
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+        'type' => $request['type'],
+      ]);
+
+      return $this->sendResponse($user, 'User Created Successfully');
     }
 
     /**

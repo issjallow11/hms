@@ -39,7 +39,9 @@ class UserRequest extends FormRequest
     {
         return [
             'type' => 'required|in:admin,user,doctor,nurse',
-            'name' => 'required|string|max:191',
+            'first_name' => 'required|string|max:191',
+            'last_name' => 'required|string|max:191',
+            'telephone_1' => 'required|integer|',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6'
         ];
@@ -54,7 +56,9 @@ class UserRequest extends FormRequest
     {
         return [
             'type' => 'sometimes|in:admin,user,doctor,nurse',
-            'name' => 'sometimes|string|max:191',
+            'first_name' => 'sometimes|string|max:191',
+            'last_name' => 'sometimes|string|max:191',
+            'telephone_1' => 'sometimes|string|max:8',
             'email' => 'sometimes|string|email|max:191|unique:users,email,' . $this->get('id')
         ];
     }

@@ -30,7 +30,9 @@ class VisitorController extends BaseController
     public function index()
     {
         // $visits = Visitor::with('client','user')->orderBy('created_at', 'desc')->paginate(10);
-        $visits = $this->visitor->latest()->with( 'client', 'user' )->paginate(10);
+        $visits = $this->visitor->where('user_id',auth()->user()->id)
+                                ->latest()->with( 'client', 'user' )
+                                ->paginate(10);
 
         return $this->sendResponse($visits, 'success');
     }
@@ -45,14 +47,15 @@ class VisitorController extends BaseController
     {
         //
         $request->validate([
-          'client_id' => 'required',
+          'clinic_no' => 'required',
+          'user_id' => 'required',
           'reason_for_visiting' => 'required'
         ]);
 
         try {
           //code...
           $visit = new Visitor();
-          $visit->client_id = $request->client_id;
+          $visit->clinic_no = $request->clinic_no;
           $visit->reason_for_visiting = $request->reason_for_visiting;
           $visit->status = $request->status;
           $visit->remarks = $request->remarks;

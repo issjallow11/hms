@@ -50,7 +50,6 @@
         <div class="card-footer">
           <div class="">
             <button type="submit" class="btn btn-primary ">
-              <i class="fa fa-paper-plane">submit</i>
             </button>
             <router-link to="/visitors" class="text-white float-right">
               <button class="btn btn-danger">

@@ -14,8 +14,7 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->string('clinic_no');
+            $table->string('clinic_no')->index()->unique();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
@@ -25,12 +24,19 @@ class CreateClientsTable extends Migration
             $table->string('address');
             $table->string('nationality');            
             $table->date('date_of_birth')->nullable();
-            $table->integer('age')->nullable();
-            $table->string('gender');
+            // $table->integer('age')->nullable();
+            // $table->string('gender');
+            $table->bigIncrements('gender_id');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
+            // $table->foreignId('gender_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('marriage');
             $table->string('marital_status')->nullable();
-            $table->string('sexual_orientation');            
-            $table->string('ethnicity');
+            // $table->string('sexual_orientation');            
+            // $table->foreignId('sexual_orientation_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sexual_orientation_id')->nullable()->constrained()->onDelete('cascade');
+            // $table->string('ethnicity');
+            // $table->foreignId('ethnicity_id')->constrained()->onDelete('cascade');
+            $table->foreignId('ethnicity_id')->nullable()->constrained()->onDelete('cascade');            
             $table->string('preferred_form_of_contact');
             $table->string('contact_type');
             $table->string('educated');

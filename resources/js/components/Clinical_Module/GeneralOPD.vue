@@ -19,7 +19,7 @@
             <div class="row">
               <div class="col-lg-3">
                 <label for="">Client ID</label>
-                <input type="text" disabled :value="client.id" class="form-control">
+                <input type="text" disabled :value="client.clinic_no" class="form-control">
               </div>
               <div class="col-lg-3">
                 <label for="">complaint</label>
@@ -28,7 +28,7 @@
               </div>
               <div class="col-lg-3">
                 <label for="exampleFormControlTextarea1">Medical History</label>
-                <textarea class="form-control" disabled :value="client.medical_history[0].medical_history"
+                <textarea class="form-control" disabled v-for="medical_history in client.medical_history" :value="medical_history.medical_history"
                   id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
               <div class="col-lg-3">
@@ -47,7 +47,7 @@
 
                 <div class="col-lg-3">
                   <label for="">BP</label>
-                  <input type="number" name="" id="" class="form-control" v-model="form.bp">
+                  <input type="number" name="" id="" class="form-control" v-model="form.bp" required>
                 </div>
                 <div class="col-lg-3">
                   <label for="">Pulse</label>
