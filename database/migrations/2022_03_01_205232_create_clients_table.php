@@ -26,9 +26,9 @@ class CreateClientsTable extends Migration
             $table->date('date_of_birth')->nullable();
             // $table->integer('age')->nullable();
             // $table->string('gender');
-            $table->bigIncrements('gender_id');
-            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
-            // $table->foreignId('gender_id')->nullable()->constrained()->onDelete('cascade');
+            // $table->bigIncrements('gender_id');
+            // $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
+            $table->foreignId('gender_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('marriage');
             $table->string('marital_status')->nullable();
             // $table->string('sexual_orientation');            

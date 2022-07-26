@@ -67,6 +67,15 @@
           </p>
         </router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/referrals" class="nav-link">
+          <i class="fas fa-clinic-medical red"></i>
+          <!-- <i class="nav-icon fas fa-tachometer-alt blue"></i> -->
+          <p>
+            Referrals
+          </p>
+        </router-link>
+      </li>
 
       <!-- Clinical Module -->
       <!-- <li class="nav-item has-treeview">
