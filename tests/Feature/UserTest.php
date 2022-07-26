@@ -23,7 +23,9 @@ class UserTest extends TestCase
      */
     public function testUserListForAdmin()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+          'type' => 'admin'
+        ]);
 
         $response = $this->actingAs($user, 'api')
             ->getJson('/api/user');
@@ -67,7 +69,9 @@ class UserTest extends TestCase
         $user = User::factory()->create();
 
         $data = [
-            'name' => $this->faker->name,
+            'first_name' => $this->faker->name,
+            'last_name' => $this->faker->name,
+            'telephone_1' => $this->faker->randomDigit,
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt(123456), // password
             'type' => 'user',
@@ -149,7 +153,9 @@ class UserTest extends TestCase
      */
     public function testDeleteUser()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+          'type' => 'admin'
+        ]);
 
         $response = $this->actingAs($user, 'api')
             ->deleteJson('/api/user/' . $user->id);

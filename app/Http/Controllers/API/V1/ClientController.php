@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\V1;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Models\MedicalHistory;
 use App\Models\Visitor;
 
@@ -99,7 +98,7 @@ class ClientController extends BaseController
         $client->occupation = $request->occupation;
         $client->occupation_type = $request->occupation_type;
         $client->save();
-
+        
         $medicalHistory = new MedicalHistory;
         $medicalHistory->clinic_no = $client->clinic_no;
         $medicalHistory->medical_history = $request->medical_history;

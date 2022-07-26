@@ -367,97 +367,83 @@
                   <div class="row">
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Diabetes</label>
-                      <input type="checkbox" @click="diabetes = !diabetes" v-model="form.medical_history"
-                        value="diabetes" />
+                      <input type="checkbox" @click="diabetes = !diabetes" v-model="form.diabetes" value="diabetes" />
                       <div v-if="diabetes">
                         <label for="">Details</label>
-                        <textarea name="diabetes details" v-model="form.medical_history_details" class="form-control"
+                        <textarea name="diabetes details" v-model="form.diabetes_details" class="form-control"
                           id="diabetes details" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Hypertension</label>
-                      <input type="checkbox" @click="hypertension = !hypertension" v-model="form.medical_history"
+                      <input type="checkbox" @click="hypertension = !hypertension" v-model="form.hypertension"
                         value="hypertension" />
                       <div v-if="hypertension">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control" id="hypertension details"
+                        <textarea v-model="form.hypertension_details" class="form-control" id="hypertension details"
                           name="hypertension details" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Asthma</label>
-                      <input type="checkbox" @click="asthma = !asthma" v-model="form.medical_history" value="asthma" />
+                      <input type="checkbox" @click="asthma = !asthma" v-model="form.asthma" value="asthma" />
                       <div v-if="asthma">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
-                          id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea v-model="form.asthma_details" class="form-control" id="exampleFormControlTextarea1"
+                          rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Cardiac Problems</label>
-                      <input type="checkbox" @click="cardiacProblems = !cardiacProblems" v-model="form.medical_history"
-                        value="cardiac problems" />
+                      <input type="checkbox" @click="cardiacProblems = !cardiacProblems" v-model="form.cardiacProblems"
+                        id="cardiac_problems" value="cardiac_problems" />
                       <div v-if="cardiacProblems">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
+                        <textarea v-model="form.cardiacProblems_details" class="form-control"
                           id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Kidney Problems</label>
-                      <input type="checkbox" @click="kidneyProblems = !kidneyProblems" v-model="form.medical_history"
-                        value="Kidney Problems" />
+                      <input type="checkbox" @click="kidneyProblems = !kidneyProblems" v-model="form.kidneyProblems"
+                        value="kidney_problems" />
                       <div v-if="kidneyProblems">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
+                        <textarea v-model="form.kidneyProblems_details" class="form-control"
                           id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Liver Problems</label>
-                      <input type="checkbox" @click="liverProblems = !liverProblems" v-model="form.medical_history"
-                        value="Liver Problems" />
+                      <input type="checkbox" @click="liverProblems = !liverProblems" v-model="form.liverProblems"
+                        value="liver_problems" />
                       <div v-if="liverProblems">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
+                        <textarea v-model="form.liverProblems_details" class="form-control"
                           id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Cancer</label>
-                      <input type="checkbox" @click="cancer = !cancer" v-model="form.medical_history" value="cancer" />
+                      <input type="checkbox" @click="cancer = !cancer" v-model="form.cancer" value="cancer" />
                       <div v-if="cancer">
                         <label for="">Details</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
-                          id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea v-model="form.cancer_details" class="form-control" id="exampleFormControlTextarea1"
+                          rows="3"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <label for="">Other</label>
-                      <input type="checkbox" @click="otherProblems = !otherProblems" v-model="form.medical_history" />
+                      <input type="checkbox" @click="otherProblems = !otherProblems"
+                        v-model="form.otherMedicalHistory" />
                       <div v-if="otherProblems">
                         <label for="">Please Specify</label>
-                        <textarea v-model="form.medical_history_details" class="form-control"
+                        <textarea v-model="form.otherMedicalHistory_details" class="form-control"
                           id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- Current Medications and Treatment -->
-                <!-- <div class="form-group p-2">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div>
-                      <h4>Medications</h4>
-                    </div>
-                    <label for="">Yes</label>
-                    <input type="radio" name="" id="">
-                  </div>
-                  <div class="col-lg-4"></div>
-                  <div class="col-lg-4"></div>
-                </div>
-              </div> -->
                 <v-container>
                   <div class="form-group px-1 py-1">
                     <div class="row">
@@ -592,122 +578,6 @@
                     </v-col>
                   </v-row>
                 </v-container>
-                <!-- <v-container>
-                <div class="mt-3 ml-2 text-center">
-                  <h4 class="text-primary">Level Of Education</h4>
-                </div>
-                <v-row class="mt-3">
-                  <v-col cols="12" md="3">
-                    <label for="">None</label>
-                    <input type="radio" name="education_level" value="none" v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Primary School</label>
-                    <input type="radio" name="education_level" value="Primary School" v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Junior Secondary</label>
-                    <input type="radio" name="education_level" value="Junior Secondary"
-                      v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Senior Secondary School</label>
-                    <input type="radio" name="education_level" value="Senior Secondary"
-                      v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Proffesional Training</label>
-                    <input type="radio" name="education_level" value="Proffesional Training"
-                      v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">College</label>
-                    <input type="radio" name="education_level" value="College" v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Bachelors Degree(BSc)</label>
-                    <input type="radio" name="education_level" value="Bachelors Degree"
-                      v-model="form.education_level" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Masters Degree(MSc)</label>
-                    <input type="radio" name="education_level" value="Masters Degree" v-model="form.education_level" />
-                  </v-col>
-                </v-row>
-              </v-container>
-              <v-divider></v-divider> -->
-
-                <!-- Occupation -->
-                <!-- <v-container>
-                <div class="mt-3 ml-2 text-center">
-                  <h4 class="text-primary">Occupation</h4>
-                </div>
-                <v-row>
-                  <v-col cols="12" md="3">
-                    <label for="">Student</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="student" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Domestic worker</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="domestic worker" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Manual Laborer</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Skilled Laborer</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="skilled laborer"
-                      @click="skilledLaborer = !skilledLaborer" />
-
-                    <label v-if="skilledLaborer" for="">Details</label>
-                    <textarea v-model="form.occupation_type" v-if="skilledLaborer" class="form-control"
-                      id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Formal employment</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="formal employement" id=""
-                      @click="formalEmployment = !formalEmployment">
-                    <div v-if="formalEmployment">
-                      <label for="">FT</label>
-                      <input type="checkbox" name="" id="" />
-                      <label for="">PT</label>
-                      <input type="checkbox" name="" id="" />
-                    </div>
-                    <label v-if="formalEmployment" for="">Details</label>
-                    <textarea v-model="form.occupation_type" v-if="formalEmployment" class="form-control"
-                      id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Informal / Self-Employeed</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="informal employment" id=""
-                      @click="informalEmployment = !informalEmployment" />
-
-                    <div v-if="informalEmployment">
-                      <label for="">Details</label>
-                      <textarea v-model="form.occupation_type" class="form-control" id="exampleFormControlTextarea1"
-                        rows="3"></textarea>
-                    </div>
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Unemployeed / Seeking Employement</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="unemployed" />
-                  </v-col>
-                  <v-col cols="12" md="3">
-                    <label for="">Others</label>
-                    <input type="radio" name="occupation" v-model="form.occupation" value="otherOccupation" id=""
-                      @click="otherOccupation = !otherOccupation">
-                    <v-text-field v-model="form.occupation_type" v-if="otherOccupation" label="Please speicify"
-                      required></v-text-field>
-                  </v-col>
-                </v-row>
-              </v-container>
-              <v-divider></v-divider> -->
-
-                <!-- <v-container> -->
-                <!-- <div class="mt-3 ml-2 text-center">
-                  <h4 class="text-primary">Reason For Visiting</h4>
-                </div> -->
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-6">
@@ -852,8 +722,23 @@ export default {
         marital_status: "",
         nationality: "GAMBIAN",
         sexual_orientation: "",
-        medical_history: [],
-        medical_history_details: [],
+        diabetes: [],
+        diabetes_details: [],
+        hypertension: [],
+        hypertension_details: [],
+        asthma: [],
+        asthma_details: [],
+        cardiacProblems: [],
+        cardiacProblems_details: [],
+        kidneyProblems: '',
+        kidneyProblems_details: [],
+        liverProblems: '',
+        liverProblems_details: [],
+        cancer: [],
+        cancer_details: [],
+        otherMedicalHistory: [],
+        otherMedicalHistory_details: [],
+        // medical_history_details: [],
         medication: "",
         medication_details: "",
         allergies: "",
