@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicalHistory extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function client()
-    {
-      return $this->belongsTo(Client::class);
-    }
+  protected $foreign_key = 'clinic_no';
 
-    protected $casts = [
-      'medical_history' => 'array',
-    ];
+  public function client()
+  {
+    return $this->belongsTo(Client::class, 'clinic_no','clinic_no');
+  }
+
+  protected $casts = [
+    'medical_history' => 'array',
+  ];
 }

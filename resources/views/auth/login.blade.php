@@ -27,10 +27,10 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                              <!-- <i class="fas fa-eye float-right" onclick="showPassword()"></i> -->
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" >
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} >
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
@@ -71,3 +71,13 @@
     </div>
 </div>
 @endsection
+<script>
+  function showPassword(){
+    let x = document.getElementById('password');
+    if(x.type === 'password'){
+      x.type = 'text';
+    }else{
+      x.type = 'password';
+    }
+  }
+</script>

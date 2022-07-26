@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductsTableSeeder::class);
         //duplicate product for data 
         $this->call(ProductsTableSeeder::class);
+        $this->call(EducationLevelSeeeder::class);
+        $this->call(EthnicitySeeeder::class);
+        $this->call(GenderSeeeder::class);
+        $this->call(OccupationSeeeder::class);
+        $this->call(SexualOrientationSeeeder::class);
     }
 }
