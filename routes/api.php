@@ -16,42 +16,42 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('version', function () {
-    return response()->json(['version' => config('app.version')]);
+  return response()->json(['version' => config('app.version')]);
 });
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    Log::debug('User:' . serialize($request->user()));
-    return $request->user();
+  Log::debug('User:' . serialize($request->user()));
+  return $request->user();
 });
 
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
-    Route::get('profile', 'ProfileController@profile');
-    Route::put('profile', 'ProfileController@updateProfile');
-    Route::post('change-password', 'ProfileController@changePassword');
-    Route::get('tag/list', 'TagController@list');
-    Route::get('category/list', 'CategoryController@list');
-    Route::post('product/upload', 'ProductController@upload');
-    Route::get('doctors','UserController@getDoctors');
-    Route::get('getClient','ClientController@getClient');
+  Route::get('profile', 'ProfileController@profile');
+  Route::put('profile', 'ProfileController@updateProfile');
+  Route::post('change-password', 'ProfileController@changePassword');
+  Route::get('tag/list', 'TagController@list');
+  Route::get('category/list', 'CategoryController@list');
+  Route::post('product/upload', 'ProductController@upload');
+  Route::get('doctors', 'UserController@getDoctors');
+  Route::get('getClient', 'ClientController@getClient');
+  Route::get('medicalCondition/list', 'MedicalConditionController@list');
 
-    Route::apiResources([
-        'user' => 'UserController',
-        'product' => 'ProductController',
-        //configurations
-        'category' => 'CategoryController',
-        'ethnicity' => 'EthnicityController',
-        'sex' => 'SexualOrientationController',
-        'gender' => 'GenderController',
-        'occupation' => 'OccupationController',
-        'educationLevel' => 'EducationLevelController',
-        'tag' => 'TagController',
-        
-        'clients' => 'ClientController',
-        'visits' => 'VisitorController',
-        'generalOpd' => 'GeneralOPDController',
-        'lab' => 'LabController',
-        'referral' => 'ReferralController'
-    ]);
+  Route::apiResources([
+    'user' => 'UserController',
+    //configurations
+    'category' => 'CategoryController',
+    'ethnicity' => 'EthnicityController',
+    'sex' => 'SexualOrientationController',
+    'gender' => 'GenderController',
+    'occupation' => 'OccupationController',
+    'educationLevel' => 'EducationLevelController',
+    'medicalCondition' => 'MedicalConditionController',
+
+    'clients' => 'ClientController',
+    'visits' => 'VisitorController',
+    'generalOpd' => 'GeneralOPDController',
+    'lab' => 'LabController',
+    'referral' => 'ReferralController'
+  ]);
 });
