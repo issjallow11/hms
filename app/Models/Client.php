@@ -11,35 +11,40 @@ class Client extends Model
 
   public $incrementing = false;
   protected $keyType = 'string';
-  protected $primaryKey = 'clinic_no'; 
-  
-  public function visitor() 
+  protected $primaryKey = 'client_no';
+
+  public function visitor()
   {
-    return $this->hasMany(Visitor::class,'clinic_no','clinic_no');
+    return $this->hasMany(Visitor::class, 'client_no', 'client_no');
   }
 
-  public function gender(){
-    return $this->belongsTo(Gender::class,'gender_id');
-  }
-
-  public function occupation(){
-    return $this->belongsTo(Occupation::class,'gender_id');
-  }
-
-  public function ethnicity(){
-    return $this->belongsTo(Ethnicity::class,'ethnicity_id');
-  }
-
-  public function sexualOrientation(){
-    return $this->belongsTo(SexualOrientation::class,'sexual_orientation_id');
-  }
-
-  public function medicalHistory() 
+  public function gender()
   {
-    return $this->hasMany(MedicalHistory::class,'clinic_no','clinic_no');
+    return $this->belongsTo(Gender::class, 'gender_id');
   }
 
-  public function generalOPD(){
+  public function occupation()
+  {
+    return $this->belongsTo(Occupation::class, 'gender_id');
+  }
+
+  public function ethnicity()
+  {
+    return $this->belongsTo(Ethnicity::class, 'ethnicity_id');
+  }
+
+  public function sexualOrientation()
+  {
+    return $this->belongsTo(SexualOrientation::class, 'sexual_orientation_id');
+  }
+
+  // public function medicalHistory()
+  // {
+  //   return $this->hasMany(MedicalHistory::class, 'client_no', 'client_no_no');
+  // }
+
+  public function generalOPD()
+  {
     return $this->hasManyThrough(GeneralOPD::class, Visitor::class)->latest()->limit(1);
   }
 

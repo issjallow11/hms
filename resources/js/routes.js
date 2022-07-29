@@ -6,7 +6,7 @@ export default [
     {
         path: "/clients",
         component:
-            require("./components/Booking_and_Registration/clients/Clients.vue")
+            require("./components/Booking_and_Registration/clients/Index.vue")
                 .default,
     },
     {
@@ -14,13 +14,13 @@ export default [
         name: "clientsShow",
         props: true,
         component:
-            require("./components/Booking_and_Registration/clients/ClientView.vue")
+            require("./components/Booking_and_Registration/clients/Show.vue")
                 .default,
     },
     {
         path: "/client/Register",
         component:
-            require("./components/Booking_and_Registration/clients/ClientRegistration.vue")
+            require("./components/Booking_and_Registration/clients/Create.vue")
                 .default,
     },
     {
@@ -28,20 +28,20 @@ export default [
         name: "clientEdit",
         props: true,
         component:
-            require("./components/Booking_and_Registration/clients/ClientEdit.vue")
+            require("./components/Booking_and_Registration/clients/Edit.vue")
                 .default,
     },
     {
         path: "/visitors",
         component:
-            require("./components/Booking_and_Registration/visitors/Visitors.vue")
+            require("./components/Booking_and_Registration/visitors/Index.vue")
                 .default,
     },
     // { path: '/visitors/add', component: require('./components/Booking_and_Registration/visitors/VisitorsAdd.vue').default},
     {
         path: "/visitors/add",
         component:
-            require("./components/Booking_and_Registration/visitors/AddVisitors.vue")
+            require("./components/Booking_and_Registration/visitors/Create.vue")
                 .default,
     },
 
@@ -201,9 +201,6 @@ export default [
         component: require("./components/Developer.vue").default,
     },
     { path: "/users", component: require("./components/Users.vue").default },
-    // { path: '/products', component: require('./components/product/Products.vue').default },
-    // { path: '/product/tag', component: require('./components/product/Tag.vue').default },
-    // { path: '/product/category', component: require('./components/product/Category.vue').default },
 
     //configurations
     {
@@ -227,6 +224,11 @@ export default [
     {
         path: "/settings/occupation",
         component: require("./components/configurations/Occupation.vue")
+            .default,
+    },
+    {
+        path: "/settings/medical_conditions",
+        component: require("./components/configurations/MedicalCondition.vue")
             .default,
     },
 
